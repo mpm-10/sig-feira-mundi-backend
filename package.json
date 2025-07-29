@@ -1,0 +1,57 @@
+{
+  "name": "sig-feira-mundi-backend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Back-End para o Fornecimento de Dados Geográficos do SIG Feira-Mundi",
+  "type": "module",
+  "main": "app/index.ts",
+  "scripts": {
+    "dev": "nodemon --exec node --no-warnings --loader ts-node/esm app/index.ts",
+    "build": "tsc",
+    "start": "node --no-warnings --loader ts-node/esm app/index.ts"
+  },
+  "keywords": [
+    "sig",
+    "dados geográficos",
+    "comércios",
+    "produtos",
+    "descontos"
+  ],
+  "authors": [
+    "Matheus Portela de Melo",
+    "Matheus Ferreira Carneiro",
+    "Alexandre Magno Fernandes Ribeiro Júnior"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "@types/typescript": "^0.4.29",
+    "@types/validator": "^13.15.2",
+    "node": "^20.19.4",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "validator": "^13.15.15"
+  },
+  "dependencies": {
+    "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/dotenv-safe": "^8.1.6",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/pg": "^8.15.5",
+    "@types/reflect-metadata": "^0.0.5",
+    "@types/sequelize": "^4.28.20",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "dotenv-safe": "^9.1.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6"
+  }
+}
