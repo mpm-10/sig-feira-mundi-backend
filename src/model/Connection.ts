@@ -17,6 +17,7 @@ import { ResolucaoChamadosModel } from "./ResolucaoChamadosModel.js";
 
 
 
+
 const databaseConnection : Sequelize = new Sequelize({
     dialect: "postgres",
     username: environmentVariables["username"],
@@ -26,11 +27,11 @@ const databaseConnection : Sequelize = new Sequelize({
     database: environmentVariables["database"]
 });
 
+const databaseModels : IDatabaseModels = {};
+
 
 
 function createModels(){
-    let databaseModels : IDatabaseModels = {};
-
     databaseModels["usuarios"] = UsuariosModel(databaseConnection);
     databaseModels["clientes"] = ClientesModel(databaseConnection);
     databaseModels["comerciantes"] = ComerciantesModel(databaseConnection);
@@ -163,9 +164,7 @@ async function startConnection(){
     try {
         await databaseConnection.authenticate({logging : false});
         await databaseConnection.sync({ logging : false, alter : false });
-        console.log(`Foi possível se conectar ao banco de dados.`);
     } catch (error) {
-        console.log(`Não foi possível se conectar ao banco de dados.`);
         process.exit(0);
     }
 }
@@ -173,9 +172,7 @@ async function startConnection(){
 async function endConnection() {
     try {
         await databaseConnection.close();
-        console.log(`Foi possível se desconectar ao banco de dados.`);
     } catch (error) {
-        console.log(`Não foi possível se desconectar ao banco de dados.`);
         process.exit(0);
     }
 }
@@ -184,6 +181,7 @@ async function endConnection() {
 
 export {
     databaseConnection,
+    databaseModels,
     createModels,
     startConnection,
     endConnection
