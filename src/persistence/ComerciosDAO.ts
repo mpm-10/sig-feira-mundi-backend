@@ -10,19 +10,24 @@ const comercios : sequelize.ModelStatic<Model> = databaseModels["comercios"]
 
 async function findOne(idComercio : number) {
     return await comercios.findOne({
-        where : {
+        where: {
             id_comercio : idComercio
-        }
+        },
+        logging: false
     })
 }
 
 async function findAll() {
-    return await comercios.findAll()
+    return await comercios.findAll({
+        logging: false
+    })
 }
 
 async function create(comercio : any) {
     try {
-        return await comercios.create(comercio)
+        return await comercios.create(comercio, {
+            logging: false
+        })
     } catch (err) {
         return null
     }
@@ -31,9 +36,10 @@ async function create(comercio : any) {
 async function update(idComercio : number, comercio : any) {
     try {
         return await comercios.update(comercio, {
-            where: {
+            where : {
                 id_comercio : idComercio
-            }
+            },
+            logging: false
         })
     } catch (err) {
         return null
@@ -42,9 +48,11 @@ async function update(idComercio : number, comercio : any) {
 
 async function destroy(idComercio : number) {
     return await comercios.destroy({
-        where: {
+        where : {
             id_comercio : idComercio
-        }
+        },
+        logging: false,
+        cascade: true
     })
 }
 

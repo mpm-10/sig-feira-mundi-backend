@@ -5,7 +5,7 @@ import type { IChamado } from "../interface/IChamado.js"
 function objectToJSON(chamadoObject : IChamado) {
     let chamado : IChamado = {
         id_chamado : null,
-        titulo : null,
+        categoria : null,
         descricao : null,
         data_chamado : null,
         hora_chamado : null
@@ -23,7 +23,7 @@ function objectToJSON(chamadoObject : IChamado) {
 function JSONToObject(chamadoJSON : IChamado) {
     let chamado : IChamado = {
         id_chamado : null,
-        titulo : null,
+        categoria : null,
         descricao : null,
         data_chamado : null,
         hora_chamado : null

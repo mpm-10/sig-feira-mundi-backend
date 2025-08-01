@@ -10,19 +10,24 @@ const administradores : sequelize.ModelStatic<Model> = databaseModels["administr
 
 async function findOne(idAdministrador : number) {
     return await administradores.findOne({
-        where : {
+        where: {
             id_administrador : idAdministrador
-        }
+        },
+        logging: false
     })
 }
 
 async function findAll() {
-    return await administradores.findAll()
+    return await administradores.findAll({
+        logging: false
+    })
 }
 
 async function create(administrador : any) {
     try {
-        return await administradores.create(administrador)
+        return await administradores.create(administrador, {
+            logging: false
+        })
     } catch (err) {
         return null
     }
@@ -33,7 +38,8 @@ async function update(idAdministrador : number, administrador : any) {
         return await administradores.update(administrador, {
             where: {
                 id_administrador : idAdministrador
-            }
+            },
+            logging: false
         })
     } catch (err) {
         return null
@@ -44,7 +50,9 @@ async function destroy(idAdministrador : number) {
     return await administradores.destroy({
         where: {
             id_administrador : idAdministrador
-        }
+        },
+        logging: false,
+        cascade: true
     })
 }
 

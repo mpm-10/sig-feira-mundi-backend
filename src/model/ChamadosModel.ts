@@ -12,7 +12,7 @@ function ChamadosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: true
         },
-        titulo: {
+        categoria: {
             type: sequelize.STRING(100),
             primaryKey: false,
             autoIncrement: false,

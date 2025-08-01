@@ -12,17 +12,22 @@ async function findOne(idCliente : number) {
     return await clientes.findOne({
         where : {
             id_cliente : idCliente
-        }
+        },
+        logging: false
     })
 }
 
 async function findAll() {
-    return await clientes.findAll()
+    return await clientes.findAll({
+        logging: false
+    })
 }
 
 async function create(cliente : any) {
     try {
-        return await clientes.create(cliente)
+        return await clientes.create(cliente, {
+            logging: false
+        })
     } catch (err) {
         return null
     }
@@ -33,7 +38,8 @@ async function update(idCliente : number, cliente : any) {
         return await clientes.update(cliente, {
             where: {
                 id_cliente : idCliente
-            }
+            },
+            logging: false
         })
     } catch (err) {
         return null
@@ -44,7 +50,9 @@ async function destroy(idCliente : number) {
     return await clientes.destroy({
         where: {
             id_cliente : idCliente
-        }
+        },
+        logging: false,
+        cascade: true
     })
 }
 

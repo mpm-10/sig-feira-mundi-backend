@@ -10,19 +10,24 @@ const tipoProdutos : sequelize.ModelStatic<Model> = databaseModels["tipoProdutos
 
 async function findOne(idTipoProduto : number) {
     return await tipoProdutos.findOne({
-        where : {
+        where: {
             id_tipo_produto : idTipoProduto
-        }
+        },
+        logging: false
     })
 }
 
 async function findAll() {
-    return await tipoProdutos.findAll()
+    return await tipoProdutos.findAll({
+        logging: false
+    })
 }
 
 async function create(tipoProduto : any) {
     try {
-        return await tipoProdutos.create(tipoProduto)
+        return await tipoProdutos.create(tipoProduto, {
+            logging: false
+        })
     } catch (err) {
         return null
     }
@@ -33,7 +38,8 @@ async function update(idTipoProduto : number, tipoProduto : any) {
         return await tipoProdutos.update(tipoProduto, {
             where: {
                 id_tipo_produto : idTipoProduto
-            }
+            },
+            logging: false
         })
     } catch (err) {
         return null
@@ -44,7 +50,9 @@ async function destroy(idTipoProduto : number) {
     return await tipoProdutos.destroy({
         where: {
             id_tipo_produto : idTipoProduto
-        }
+        },
+        logging: false,
+        cascade: true
     })
 }
 
