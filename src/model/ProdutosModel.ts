@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function ProdutosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('produtos', {
         id_produto: {
@@ -35,8 +33,10 @@ function ProdutosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     ProdutosModel

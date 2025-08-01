@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function ResolucaoChamadosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('resolucao_chamados', {
         status: {
@@ -21,8 +19,10 @@ function ResolucaoChamadosModel(databaseConnection : Sequelize) : sequelize.Mode
             allowNull: false,
             unique: false
         },
-    });
+    })
 }
+
+
 
 export {
     ResolucaoChamadosModel

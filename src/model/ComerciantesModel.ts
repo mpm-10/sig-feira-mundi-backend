@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function ComerciantesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('comerciantes', {
         id_comerciante: {
@@ -21,8 +19,10 @@ function ComerciantesModel(databaseConnection : Sequelize) : sequelize.ModelStat
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     ComerciantesModel

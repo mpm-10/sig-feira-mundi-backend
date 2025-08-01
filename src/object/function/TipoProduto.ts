@@ -1,39 +1,37 @@
-import type { ITipoProduto } from "../interface/ITipoProduto.js";
-
-
-
-let idTipoProduto : number | null = null;
-let nomeTipo : string | null = null;
-let descricao : string | null = null;
+import type { ITipoProduto } from "../interface/ITipoProduto.js"
 
 
 
 function objectToJSON(tipoProdutoObject : ITipoProduto) {
-    idTipoProduto = "id_tipo_produto" in tipoProdutoObject ? tipoProdutoObject["id_tipo_produto"] : null;
-    nomeTipo = "nome_tipo" in tipoProdutoObject ? tipoProdutoObject["nome_tipo"] : null;
-    descricao = "descricao" in tipoProdutoObject ? tipoProdutoObject["descricao"] : null;
-    
-    const produto : ITipoProduto = {
-        id_tipo_produto : idTipoProduto,
-        nome_tipo : nomeTipo,
-        descricao : descricao
-    };
+    let tipoProduto : ITipoProduto = {
+        id_tipo_produto : null,
+        nome_tipo : null,
+        descricao : null
+    }
 
-    return produto;
+    for(let key in tipoProdutoObject){
+        if (key in tipoProduto){
+            (tipoProduto as any)[key as keyof ITipoProduto] = tipoProdutoObject[key as keyof ITipoProduto]
+        }
+    }
+
+    return tipoProduto
 }
 
 function JSONToObject(tipoProdutoJSON : ITipoProduto) {
-    idTipoProduto = "id_tipo_produto" in tipoProdutoJSON ? tipoProdutoJSON["id_tipo_produto"] : null;
-    nomeTipo = "nome_tipo" in tipoProdutoJSON ? tipoProdutoJSON["nome_tipo"] : null;
-    descricao = "descricao" in tipoProdutoJSON ? tipoProdutoJSON["descricao"] : null;
-    
-    const produto : ITipoProduto = {
-        id_tipo_produto : idTipoProduto,
-        nome_tipo : nomeTipo,
-        descricao : descricao
-    };
+    let tipoProduto : ITipoProduto = {
+        id_tipo_produto : null,
+        nome_tipo : null,
+        descricao : null
+    }
 
-    return produto;
+    for(let key in tipoProdutoJSON){
+        if (key in tipoProduto){
+            (tipoProduto as any)[key as keyof ITipoProduto] = tipoProdutoJSON[key as keyof ITipoProduto]
+        }
+    }
+
+    return tipoProduto
 }
 
 

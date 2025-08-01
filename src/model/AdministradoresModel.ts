@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function AdministradoresModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('administradores', {
         id_administrador: {
@@ -42,8 +40,10 @@ function AdministradoresModel(databaseConnection : Sequelize) : sequelize.ModelS
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     AdministradoresModel

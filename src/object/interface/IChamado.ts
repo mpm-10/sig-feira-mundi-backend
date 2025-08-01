@@ -1,6 +1,3 @@
-
-
-
 interface IChamado {
     id_chamado : number | null,
     titulo : string | null,

@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function ClientesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('clientes', {
         id_cliente: {
@@ -21,8 +19,10 @@ function ClientesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: false
         },
-    });
+    })
 }
+
+
 
 export {
     ClientesModel

@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function TipoProdutosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('tipo_produtos', {
         id_tipo_produto: {
@@ -28,8 +26,10 @@ function TipoProdutosModel(databaseConnection : Sequelize) : sequelize.ModelStat
             allowNull: false,
             unique: true
         }
-    });
+    })
 }
+
+
 
 export {
     TipoProdutosModel

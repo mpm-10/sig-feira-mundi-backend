@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function UsuariosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('usuarios', {
         id_usuario: {
@@ -49,8 +47,10 @@ function UsuariosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     UsuariosModel

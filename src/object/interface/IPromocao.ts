@@ -1,6 +1,3 @@
-
-
-
 interface IPromocao {
     id_promocao : number | null,
     porcentagem_desconto : number | null,

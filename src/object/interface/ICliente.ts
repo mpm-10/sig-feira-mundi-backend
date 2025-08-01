@@ -1,6 +1,3 @@
-
-
-
 interface ICliente {
     id_usuario : number | null,
     nome_real : string | null,

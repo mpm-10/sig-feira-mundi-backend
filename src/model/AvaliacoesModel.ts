@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function AvaliacoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('avaliacoes', {
         grau: {
@@ -21,8 +19,10 @@ function AvaliacoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic
             allowNull: true,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     AvaliacoesModel

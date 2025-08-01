@@ -1,6 +1,3 @@
-
-
-
 interface IProduto {
     id_produto : number | null,
     nome_produto : string | null,

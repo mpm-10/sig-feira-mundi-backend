@@ -1,6 +1,3 @@
-
-
-
 interface IComercio {
     id_comercio : number | null,
     nome : string | null,

@@ -1,7 +1,4 @@
-
-
-
-export interface IEnvironmentVariables{
+interface IEnvironmentVariables{
     servicePort : number
     username : string
     password : string
@@ -10,3 +7,8 @@ export interface IEnvironmentVariables{
     database : string
 }
 
+
+
+export type {
+    IEnvironmentVariables
+}

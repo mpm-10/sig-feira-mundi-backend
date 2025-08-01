@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function PromocoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('promocoes', {
         id_promocao: {
@@ -49,8 +47,10 @@ function PromocoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     PromocoesModel

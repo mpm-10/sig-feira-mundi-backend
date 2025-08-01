@@ -1,6 +1,3 @@
-
-
-
 interface IAdministrador {
     id_usuario : number | null,
     nome_real : string | null,
@@ -13,6 +10,7 @@ interface IAdministrador {
     area : string | null,
     ultima_atividade : Date | null
 }
+
 
 
 export type {

@@ -3,8 +3,6 @@ import { Model, Sequelize } from "sequelize"
 
 
 
-
-
 function ChamadosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('chamados', {
         id_chamado: {
@@ -42,8 +40,10 @@ function ChamadosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: false
         }
-    });
+    })
 }
+
+
 
 export {
     ChamadosModel

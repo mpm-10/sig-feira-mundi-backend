@@ -14,10 +14,10 @@ const environmentVariables : IEnvironmentVariables = {
     host : String(process.env.POSTGRES_HOST) || "localhost",
     port : Number(process.env.POSTGRES_PORT) || 5432,
     database : String(process.env.POSTGRES_DATABASE) || "database"
-};
+}
 
 
 
 export {
     environmentVariables
-};
+}
