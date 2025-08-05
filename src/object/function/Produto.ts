@@ -2,7 +2,7 @@ import type { IProduto } from "../interface/IProduto.js"
 
 
 
-function objectToJSON(produtoObject : IProduto) {
+function objectToJSON(produtoObject : any) {
     let produto : IProduto = {
         id_produto : null,
         nome_produto : null,
@@ -10,16 +10,16 @@ function objectToJSON(produtoObject : IProduto) {
         preco : null
     }
 
-    for(let key in produtoObject){
-        if (key in produto){
-            (produto as any)[key as keyof IProduto] = produtoObject[key as keyof IProduto]
+    Object.keys(produtoObject).forEach((key: any) => {
+        if (key in produto) {
+            produto[key as keyof IProduto] = produtoObject[key as keyof IProduto]
         }
-    }
+    });
 
     return produto
 }
 
-function JSONToObject(produtoJSON : IProduto) {
+function JSONToObject(produtoJSON : any) {
     let produto : IProduto = {
         id_produto : null,
         nome_produto : null,
@@ -27,11 +27,11 @@ function JSONToObject(produtoJSON : IProduto) {
         preco : null
     }
 
-    for(let key in produtoJSON){
-        if (key in produto){
-            (produto as any)[key as keyof IProduto] = produtoJSON[key as keyof IProduto]
+    Object.keys(produtoJSON).forEach((key: any) => {
+        if (key in produto) {
+            produto[key as keyof IProduto] = produtoJSON[key as keyof IProduto]
         }
-    }
+    });
 
     return produto
 }

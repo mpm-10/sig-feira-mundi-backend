@@ -5,7 +5,7 @@ import { Model, Sequelize } from "sequelize"
 
 function ComerciantesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<Model>{
     return databaseConnection.define('comerciantes', {
-        id_comerciante: {
+        id_usuario: {
             type: sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -19,6 +19,8 @@ function ComerciantesModel(databaseConnection : Sequelize) : sequelize.ModelStat
             allowNull: false,
             unique: false
         }
+    }, {
+        timestamps: false
     })
 }
 

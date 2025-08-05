@@ -2,7 +2,7 @@ import type { IPromocao } from "../interface/IPromocao.js"
 
 
 
-function objectToJSON(promocaoObject : IPromocao) {
+function objectToJSON(promocaoObject : any) {
     let promocao : IPromocao = {
         id_promocao : null,
         porcentagem_desconto : null,
@@ -12,16 +12,16 @@ function objectToJSON(promocaoObject : IPromocao) {
         hora_fim : null
     }
 
-    for(let key in promocaoObject){
-        if (key in promocao){
-            (promocao as any)[key as keyof IPromocao] = promocaoObject[key as keyof IPromocao]
+    Object.keys(promocaoObject).forEach((key: any) => {
+        if (key in promocao) {
+            promocao[key as keyof IPromocao] = promocaoObject[key as keyof IPromocao]
         }
-    }
+    });
 
     return promocao
 }
 
-function JSONToObject(promocaoJSON : IPromocao) {
+function JSONToObject(promocaoJSON : any) {
     let promocao : IPromocao = {
         id_promocao : null,
         porcentagem_desconto : null,
@@ -31,11 +31,11 @@ function JSONToObject(promocaoJSON : IPromocao) {
         hora_fim : null
     }
 
-    for(let key in promocaoJSON){
-        if (key in promocao){
-            (promocao as any)[key as keyof IPromocao] = promocaoJSON[key as keyof IPromocao]
+    Object.keys(promocaoJSON).forEach((key: any) => {
+        if (key in promocao) {
+            promocao[key as keyof IPromocao] = promocaoJSON[key as keyof IPromocao]
         }
-    }
+    });
 
     return promocao
 }

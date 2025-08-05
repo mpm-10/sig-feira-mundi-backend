@@ -2,7 +2,7 @@ import type { IChamado } from "../interface/IChamado.js"
 
 
 
-function objectToJSON(chamadoObject : IChamado) {
+function objectToJSON(chamadoObject : any) {
     let chamado : IChamado = {
         id_chamado : null,
         categoria : null,
@@ -11,16 +11,16 @@ function objectToJSON(chamadoObject : IChamado) {
         hora_chamado : null
     }
 
-    for(let key in chamadoObject){
-        if (key in chamado){
-            (chamado as any)[key as keyof IChamado] = chamadoObject[key as keyof IChamado]
+    Object.keys(chamadoObject).forEach((key: any) => {
+        if (key in chamado) {
+            chamado[key as keyof IChamado] = chamadoObject[key as keyof IChamado]
         }
-    }
+    });
 
     return chamado
 }
 
-function JSONToObject(chamadoJSON : IChamado) {
+function JSONToObject(chamadoJSON : any) {
     let chamado : IChamado = {
         id_chamado : null,
         categoria : null,
@@ -29,11 +29,11 @@ function JSONToObject(chamadoJSON : IChamado) {
         hora_chamado : null
     }
 
-    for(let key in chamadoJSON){
-        if (key in chamado){
-            (chamado as any)[key as keyof IChamado] = chamadoJSON[key as keyof IChamado]
+    Object.keys(chamadoJSON).forEach((key: any) => {
+        if (key in chamado) {
+            chamado[key as keyof IChamado] = chamadoJSON[key as keyof IChamado]
         }
-    }
+    });
 
     return chamado
 }

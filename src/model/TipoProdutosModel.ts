@@ -26,6 +26,8 @@ function TipoProdutosModel(databaseConnection : Sequelize) : sequelize.ModelStat
             allowNull: false,
             unique: true
         }
+    }, {
+        timestamps: false
     })
 }
 

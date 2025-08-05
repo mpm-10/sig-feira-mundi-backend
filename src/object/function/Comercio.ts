@@ -2,9 +2,9 @@ import type { IComercio } from "../interface/IComercio.js"
 
 
 
-function objectToJSON(comercioObject : IComercio) {
+function objectToJSON(comercioObject : any) {
     let comercio : IComercio = {
-        id_comercio : null,
+        id_comrc : null,
         nome : null,
         endereco : null,
         telefone : null,
@@ -13,18 +13,18 @@ function objectToJSON(comercioObject : IComercio) {
         geometria : null
     }
 
-    for(let key in comercioObject){
-        if (key in comercio){
-            (comercio as any)[key as keyof IComercio] = comercioObject[key as keyof IComercio]
+    Object.keys(comercioObject).forEach((key: any) => {
+        if (key in comercio) {
+            comercio[key as keyof IComercio] = comercioObject[key as keyof IComercio]
         }
-    }
+    });
 
     return comercio
 }
 
-function JSONToObject(comercioJSON : IComercio) {
+function JSONToObject(comercioJSON : any) {
     let comercio : IComercio = {
-        id_comercio : null,
+        id_comrc : null,
         nome : null,
         endereco : null,
         telefone : null,
@@ -33,11 +33,11 @@ function JSONToObject(comercioJSON : IComercio) {
         geometria : null
     }
 
-    for(let key in comercioJSON){
-        if (key in comercio){
-            (comercio as any)[key as keyof IComercio] = comercioJSON[key as keyof IComercio]
+    Object.keys(comercioJSON).forEach((key: any) => {
+        if (key in comercio) {
+            comercio[key as keyof IComercio] = comercioJSON[key as keyof IComercio]
         }
-    }
+    });
 
     return comercio
 }

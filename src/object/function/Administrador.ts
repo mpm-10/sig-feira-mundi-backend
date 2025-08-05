@@ -2,27 +2,34 @@ import type { IAdministrador } from "../interface/IAdministrador.js"
 
 
 
-function objectToJSON(administradorObject : IAdministrador) {
-    let administrador : IAdministrador = {
+function objectToJSON(administradorObject : any) {
+    let usuario : any = {
         id_usuario : null,
         nome_real : null,
         nome_usuario : null,
         senha : null,
         email : null,
-        data_registro : null,
+        data_registro : null
+    }
+
+    let administrador : any = {
+        id_usuario : null,
         token_acesso : null,
         nivel_acesso : null,
         area : null,
         ultima_atividade : null
     }
 
-    for(let key in administradorObject){
-        if (key in administrador){
-            (administrador as any)[key as keyof IAdministrador] = administradorObject[key as keyof IAdministrador]
+    Object.keys(administradorObject).forEach((key: any) => {
+        if (key in usuario) {
+            usuario[key as keyof IAdministrador] = administradorObject[key as keyof IAdministrador]
         }
-    }
-
-    return administrador
+        if (key in administrador) {
+            administrador[key as keyof IAdministrador] = administradorObject[key as keyof IAdministrador]
+        }
+    });
+    
+    return [usuario, administrador]
 }
 
 function JSONToObject(administradorJSON : any) {
@@ -39,11 +46,17 @@ function JSONToObject(administradorJSON : any) {
         ultima_atividade : null
     }
 
-    for(let key in administradorJSON){
-        if (key in administrador){
-            (administrador as any)[key as keyof IAdministrador] = administradorJSON[key as keyof IAdministrador]
+    const usuarioRegister = administradorJSON[0]
+    const administradorRegister = administradorJSON[1]
+
+    Object.keys(administrador).forEach((key: any) => {
+        if (key in usuarioRegister) {
+            administrador[key as keyof IAdministrador] = usuarioRegister[key as keyof IAdministrador]
         }
-    }
+        if (key in administradorRegister) {
+            administrador[key as keyof IAdministrador] = administradorRegister[key as keyof IAdministrador]
+        }
+    });
 
     return administrador
 }

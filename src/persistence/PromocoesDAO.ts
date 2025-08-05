@@ -10,23 +10,26 @@ const promocoes : sequelize.ModelStatic<Model> = databaseModels["promocoes"]
 
 async function findOne(idPromocao : number) {
     return await promocoes.findOne({
-        where: {
+        where : {
             id_promocao : idPromocao
         },
-        logging: false
+        logging: false,
+        raw: true
     })
 }
 
 async function findAll() {
     return await promocoes.findAll({
-        logging: false
+        logging: false,
+        raw: true
     })
 }
 
 async function create(promocao : any) {
     try {
         return await promocoes.create(promocao, {
-            logging: false
+            logging: false,
+            raw: true
         })
     } catch (err) {
         return null

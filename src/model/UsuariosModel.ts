@@ -47,6 +47,8 @@ function UsuariosModel(databaseConnection : Sequelize) : sequelize.ModelStatic<M
             allowNull: false,
             unique: false
         }
+    }, {
+        timestamps: false
     })
 }
 

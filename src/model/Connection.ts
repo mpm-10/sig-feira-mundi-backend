@@ -1,7 +1,7 @@
 import { environmentVariables } from "../io/EnvironmentVariables.js"
 import { Sequelize } from "sequelize"
-import { UsuariosModel } from "./UsuariosModel.js"
 import type { IDatabaseModels } from "./IDatabaseModels.js"
+import { UsuariosModel } from "./UsuariosModel.js"
 import { ClientesModel } from "./ClientesModel.js"
 import { ComerciantesModel } from "./ComerciantesModel.js"
 import { AdministradoresModel } from "./AdministradoresModel.js"
@@ -9,10 +9,11 @@ import { ComerciosModel } from "./ComerciosModel.js"
 import { ProdutosModel } from "./ProdutosModel.js"
 import { TipoProdutosModel } from "./TipoProdutosModel.js"
 import { PromocoesModel } from "./PromocoesModel.js"
-import { AvaliacoesModel } from "./AvaliacoesModel.js"
 import { ChamadosModel } from "./ChamadosModel.js"
+import { AvaliacoesModel } from "./AvaliacoesModel.js"
 import { ResolucaoChamadosModel } from "./ResolucaoChamadosModel.js"
-
+import { ComerciosFavoritosModel } from "./ComerciosFavoritosModel.js"
+import { ProdutosFavoritosModel } from "./ProdutosFavoritosModel.js"
 
 
 
@@ -34,8 +35,10 @@ const databaseModels : IDatabaseModels = {
     produtos : ProdutosModel(databaseConnection),
     tipoProdutos : TipoProdutosModel(databaseConnection),
     promocoes : PromocoesModel(databaseConnection),
-    avaliacoes : AvaliacoesModel(databaseConnection),
     chamados : ChamadosModel(databaseConnection),
+    avaliacoes : AvaliacoesModel(databaseConnection),
+    comerciosFavoritos : ComerciosFavoritosModel(databaseConnection),
+    produtosFavoritos : ProdutosFavoritosModel(databaseConnection),
     resolucaoChamados : ResolucaoChamadosModel(databaseConnection)
 }
 
@@ -72,38 +75,38 @@ function createModels(){
     
 
     databaseModels["comerciantes"].hasMany(databaseModels["comercios"], {
-        foreignKey: "id_comerciante",
+        foreignKey: "id_usuario",
         onDelete: "CASCADE"
     })
     databaseModels["comercios"].belongsTo(databaseModels["comerciantes"], {
-        foreignKey: "id_comerciante",
+        foreignKey: "id_usuario",
         onDelete: "CASCADE"
     })
 
     databaseModels["comercios"].hasMany(databaseModels["promocoes"], {
-        foreignKey: "id_comercio",
+        foreignKey: "id_comrc",
         onDelete: "CASCADE"
     })
     databaseModels["promocoes"].belongsTo(databaseModels["comercios"], {
-        foreignKey: "id_comercio",
+        foreignKey: "id_comrc",
         onDelete: "CASCADE"
     })
 
     databaseModels["comercios"].hasMany(databaseModels["produtos"], {
-        foreignKey: "id_produto",
+        foreignKey: "id_comrc",
         onDelete: "CASCADE"
     })
     databaseModels["produtos"].belongsTo(databaseModels["comercios"], {
-        foreignKey: "id_produto",
+        foreignKey: "id_comrc",
         onDelete: "CASCADE"
     })
 
-    databaseModels["promocoes"].hasMany(databaseModels["produtos"], {
-        foreignKey: "id_promocao",
+    databaseModels["produtos"].hasMany(databaseModels["promocoes"], {
+        foreignKey: "id_produto",
         onDelete: "CASCADE"
     })
-    databaseModels["produtos"].belongsTo(databaseModels["promocoes"], {
-        foreignKey: "id_promocao",
+    databaseModels["promocoes"].belongsTo(databaseModels["produtos"], {
+        foreignKey: "id_produto",
         onDelete: "CASCADE"
     })
 
@@ -129,60 +132,74 @@ function createModels(){
 
     databaseModels["clientes"].belongsToMany(databaseModels["comercios"], {
         through : databaseModels["avaliacoes"],
-        foreignKey: "id_cliente",
-        otherKey: "id_comercio",
-        onDelete: "CASCADE"
+        foreignKey: "id_usuario",
+        otherKey: "id_comrc",
+        onDelete: "CASCADE",
+        timestamps: false
     })
     databaseModels["comercios"].belongsToMany(databaseModels["clientes"], {
         through : databaseModels["avaliacoes"],
-        foreignKey: "id_comercio",
-        otherKey: "id_cliente",
-        onDelete: "CASCADE"
+        foreignKey: "id_comrc",
+        otherKey: "id_usuario",
+        onDelete: "CASCADE",
+        timestamps: false
     })
 
     databaseModels["clientes"].belongsToMany(databaseModels["comercios"], {
-        through : "comercios_favoritos",
-        foreignKey: "id_cliente",
-        otherKey: "id_comercio",
-        onDelete: "CASCADE"
+        through : databaseModels["comerciosFavoritos"],
+        foreignKey: "id_usuario",
+        otherKey: "id_comrc",
+        onDelete: "CASCADE",
+        timestamps: false
     })
     databaseModels["comercios"].belongsToMany(databaseModels["clientes"], {
-        through : "comercios_favoritos",
-        foreignKey: "id_comercio",
-        otherKey: "id_cliente",
-        onDelete: "CASCADE"
+        through : databaseModels["comerciosFavoritos"],
+        foreignKey: "id_comrc",
+        otherKey: "id_usuario",
+        onDelete: "CASCADE",
+        timestamps: false
     })
 
     databaseModels["clientes"].belongsToMany(databaseModels["tipoProdutos"], {
-        through : "produtos_favoritos",
-        foreignKey: "id_cliente",
+        through : databaseModels["produtosFavoritos"],
+        foreignKey: "id_usuario",
         otherKey: "id_tipo_produto",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
+        timestamps: false
     })
     databaseModels["tipoProdutos"].belongsToMany(databaseModels["clientes"], {
-        through : "produtos_favoritos",
+        through : databaseModels["produtosFavoritos"],
         foreignKey: "id_tipo_produto",
-        otherKey: "id_cliente",
-        onDelete: "CASCADE"
+        otherKey: "id_usuario",
+        onDelete: "CASCADE",
+        timestamps: false
     })
 
     databaseModels["chamados"].belongsToMany(databaseModels["administradores"], {
         through : databaseModels["resolucaoChamados"],
         foreignKey: "id_chamado",
-        otherKey: "id_administrador",
-        onDelete: "CASCADE"
+        otherKey: "id_usuario",
+        onDelete: "CASCADE",
+        timestamps: false
     })
     databaseModels["administradores"].belongsToMany(databaseModels["chamados"], {
         through : databaseModels["resolucaoChamados"],
-        foreignKey: "id_administrador",
+        foreignKey: "id_usuario",
         otherKey: "id_chamado",
-        onDelete: "CASCADE"
+        onDelete: "CASCADE",
+        timestamps: false
     })
+
+    Object.values(databaseModels).forEach((model: any) => {
+        if (typeof model.associate === "function") {
+            model.associate(databaseModels);
+        }
+    });
 }
 
 async function startConnection(){
     try {
-        await databaseConnection.authenticate({logging : false})
+        await databaseConnection.authenticate({ logging : false })
         await databaseConnection.sync({ logging : false, alter : false })
         console.log(`Conexão com o Banco de Dados ${environmentVariables["database"]} Bem-Sucedida`);
     } catch (error) {

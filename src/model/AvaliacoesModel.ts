@@ -19,6 +19,8 @@ function AvaliacoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic
             allowNull: true,
             unique: false
         }
+    }, {
+        timestamps: false
     })
 }
 

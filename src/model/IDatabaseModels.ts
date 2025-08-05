@@ -13,6 +13,8 @@ interface IDatabaseModels{
     "tipoProdutos" : sequelize.ModelStatic<Model>
     "promocoes" : sequelize.ModelStatic<Model>
     "avaliacoes" : sequelize.ModelStatic<Model>
+    "comerciosFavoritos" : sequelize.ModelStatic<Model>
+    "produtosFavoritos" : sequelize.ModelStatic<Model>
     "chamados" : sequelize.ModelStatic<Model>
     "resolucaoChamados" : sequelize.ModelStatic<Model>
 }

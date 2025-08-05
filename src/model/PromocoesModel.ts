@@ -47,6 +47,8 @@ function PromocoesModel(databaseConnection : Sequelize) : sequelize.ModelStatic<
             allowNull: false,
             unique: false
         }
+    }, {
+        timestamps: false
     })
 }
 

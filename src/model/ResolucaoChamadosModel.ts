@@ -19,6 +19,8 @@ function ResolucaoChamadosModel(databaseConnection : Sequelize) : sequelize.Mode
             allowNull: false,
             unique: false
         },
+    }, {
+        timestamps: false
     })
 }
 
