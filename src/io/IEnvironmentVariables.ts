@@ -4,7 +4,9 @@ interface IEnvironmentVariables{
     password : string
     host : string
     port : number
-    database : string
+    database : string,
+    JWTSecret : string
+    JWTExpires : number
 }
 
 

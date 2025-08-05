@@ -13,7 +13,9 @@ const environmentVariables : IEnvironmentVariables = {
     password : String(process.env.POSTGRES_PASSWORD) || "postgres",
     host : String(process.env.POSTGRES_HOST) || "localhost",
     port : Number(process.env.POSTGRES_PORT) || 5432,
-    database : String(process.env.POSTGRES_DATABASE) || "database"
+    database : String(process.env.POSTGRES_DATABASE) || "database",
+    JWTSecret : String(process.env.JWT_SECRET) || "",
+    JWTExpires : Number(process.env.JWT_EXPIRES) || 60
 }
 
 
