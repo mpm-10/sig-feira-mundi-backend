@@ -14,7 +14,7 @@ function objectToJSON(resolucaoChamadoObject : any) {
         if (key in resolucaoChamado) {
             resolucaoChamado[key as keyof IResolucaoChamado] = resolucaoChamadoObject[key as keyof IResolucaoChamado]
         }
-    });
+    })
 
     return resolucaoChamado
 }
@@ -31,7 +31,7 @@ function JSONToObject(resolucaoChamadoJSON : any) {
         if (key in resolucaoChamado) {
             resolucaoChamado[key as keyof IResolucaoChamado] = resolucaoChamadoJSON[key as keyof IResolucaoChamado]
         }
-    });
+    })
 
     return resolucaoChamado
 }

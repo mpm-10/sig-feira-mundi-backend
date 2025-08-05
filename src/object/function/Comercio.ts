@@ -17,7 +17,7 @@ function objectToJSON(comercioObject : any) {
         if (key in comercio) {
             comercio[key as keyof IComercio] = comercioObject[key as keyof IComercio]
         }
-    });
+    })
 
     return comercio
 }
@@ -37,7 +37,7 @@ function JSONToObject(comercioJSON : any) {
         if (key in comercio) {
             comercio[key as keyof IComercio] = comercioJSON[key as keyof IComercio]
         }
-    });
+    })
 
     return comercio
 }

@@ -12,7 +12,7 @@ function objectToJSON(produtoFavoritoObject : any) {
         if (key in produtoFavorito) {
             produtoFavorito[key as keyof IProdutoFavorito] = produtoFavoritoObject[key as keyof IProdutoFavorito]
         }
-    });
+    })
 
     return produtoFavorito
 }
@@ -27,7 +27,7 @@ function JSONToObject(produtoFavoritoJSON : any) {
         if (key in produtoFavorito) {
             produtoFavorito[key as keyof IProdutoFavorito] = produtoFavoritoJSON[key as keyof IProdutoFavorito]
         }
-    });
+    })
 
     return produtoFavorito
 }

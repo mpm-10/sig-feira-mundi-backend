@@ -27,7 +27,7 @@ function objectToJSON(administradorObject : any) {
         if (key in administrador) {
             administrador[key as keyof IAdministrador] = administradorObject[key as keyof IAdministrador]
         }
-    });
+    })
     
     return [usuario, administrador]
 }
@@ -56,7 +56,7 @@ function JSONToObject(administradorJSON : any) {
         if (key in administradorRegister) {
             administrador[key as keyof IAdministrador] = administradorRegister[key as keyof IAdministrador]
         }
-    });
+    })
 
     return administrador
 }

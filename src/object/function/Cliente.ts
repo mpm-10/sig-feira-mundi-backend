@@ -24,7 +24,7 @@ function objectToJSON(clienteObject : any) {
         if (key in cliente) {
             cliente[key as keyof ICliente] = clienteObject[key as keyof ICliente]
         }
-    });
+    })
     
     return [usuario, cliente]
 }
@@ -50,7 +50,7 @@ function JSONToObject(clienteJSON : any) {
         if (key in clienteRegister) {
             cliente[key as keyof ICliente] = clienteRegister[key as keyof ICliente]
         }
-    });
+    })
 
     return cliente
 }

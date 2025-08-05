@@ -14,7 +14,7 @@ function objectToJSON(avaliacaoObject : any) {
         if (key in avaliacao) {
             avaliacao[key as keyof IAvaliacao] = avaliacaoObject[key as keyof IAvaliacao]
         }
-    });
+    })
 
     return avaliacao
 }
@@ -31,7 +31,7 @@ function JSONToObject(avaliacaoJSON : any) {
         if (key in avaliacao) {
             avaliacao[key as keyof IAvaliacao] = avaliacaoJSON[key as keyof IAvaliacao]
         }
-    });
+    })
 
     return avaliacao
 }

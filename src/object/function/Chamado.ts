@@ -15,7 +15,7 @@ function objectToJSON(chamadoObject : any) {
         if (key in chamado) {
             chamado[key as keyof IChamado] = chamadoObject[key as keyof IChamado]
         }
-    });
+    })
 
     return chamado
 }
@@ -33,7 +33,7 @@ function JSONToObject(chamadoJSON : any) {
         if (key in chamado) {
             chamado[key as keyof IChamado] = chamadoJSON[key as keyof IChamado]
         }
-    });
+    })
 
     return chamado
 }

@@ -16,7 +16,7 @@ function objectToJSON(promocaoObject : any) {
         if (key in promocao) {
             promocao[key as keyof IPromocao] = promocaoObject[key as keyof IPromocao]
         }
-    });
+    })
 
     return promocao
 }
@@ -35,7 +35,7 @@ function JSONToObject(promocaoJSON : any) {
         if (key in promocao) {
             promocao[key as keyof IPromocao] = promocaoJSON[key as keyof IPromocao]
         }
-    });
+    })
 
     return promocao
 }

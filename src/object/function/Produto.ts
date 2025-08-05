@@ -14,7 +14,7 @@ function objectToJSON(produtoObject : any) {
         if (key in produto) {
             produto[key as keyof IProduto] = produtoObject[key as keyof IProduto]
         }
-    });
+    })
 
     return produto
 }
@@ -31,7 +31,7 @@ function JSONToObject(produtoJSON : any) {
         if (key in produto) {
             produto[key as keyof IProduto] = produtoJSON[key as keyof IProduto]
         }
-    });
+    })
 
     return produto
 }

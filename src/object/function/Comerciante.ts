@@ -24,7 +24,7 @@ function objectToJSON(comercianteObject : any) {
         if (key in comerciante) {
             comerciante[key as keyof IComerciante] = comercianteObject[key as keyof IComerciante]
         }
-    });
+    })
     
     return [usuario, comerciante]
 }
@@ -50,7 +50,7 @@ function JSONToObject(comercianteJSON : any) {
         if (key in comercianteRegister) {
             comerciante[key as keyof IComerciante] = comercianteRegister[key as keyof IComerciante]
         }
-    });
+    })
 
     return comerciante
 }

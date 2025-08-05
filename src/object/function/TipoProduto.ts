@@ -13,7 +13,7 @@ function objectToJSON(tipoProdutoObject : any) {
         if (key in tipoProduto) {
             tipoProduto[key as keyof ITipoProduto] = tipoProdutoObject[key as keyof ITipoProduto]
         }
-    });
+    })
 
     return tipoProduto
 }
@@ -29,7 +29,7 @@ function JSONToObject(tipoProdutoJSON : any) {
         if (key in tipoProduto) {
             tipoProduto[key as keyof ITipoProduto] = tipoProdutoJSON[key as keyof ITipoProduto]
         }
-    });
+    })
 
     return tipoProduto
 }
